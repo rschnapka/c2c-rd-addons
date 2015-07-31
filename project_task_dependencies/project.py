@@ -166,7 +166,7 @@ class project_task(osv.Model):
                 _logger.debug('FGF successors %s' % (task.successor_ids)   )
                 for successor in task.successor_ids:
                     _logger.debug('FGF successor %s' % (successor.id)   )
-                    if successor.state not in ('done'):
+                    if successor.state not in ('done', 'Done'):
                         dates = self.compute_earliest_start(cr, uid, successor.id, context)
                         if dates:
                             self.write(cr, uid, [successor.id], {'date_start': dates[0], 'date_end': dates[1]})
